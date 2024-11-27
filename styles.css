@@ -1,0 +1,411 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+    --Strong-cyan: hsl(172, 67%, 45%);
+    --Very-dark-cyan: hsl(183, 100%, 15%);
+    --Dark-grayish-cyan: hsl(186, 14%, 43%);
+    --Grayish-cyan: hsl(184, 14%, 56%);
+    --Light-grayish-cyan: hsl(185, 41%, 84%);
+    --Very-light-grayish-cyan: hsl(189, 41%, 97%);
+    --error-text: hsl(0, 90%, 60%);
+    --White: hsl(0, 0%, 100%);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--Light-grayish-cyan);
+    font-family: "Space Mono", monospace;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    min-height: 100vh;
+    width: 100%;
+    max-width: 375px;
+
+    #logo {
+        max-height: 100vh;
+        margin-top: auto;
+        margin-bottom: 20px;
+    }
+
+    form {
+        background-color: var(--White);
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 25px;
+        border-radius: 20px 20px 0 0;
+
+        .form-fill {
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            
+
+
+            .bill, #bill, #tip-selection, #no-of-people, #people {
+                display: block;
+            }
+
+            .bill {
+                margin-bottom: 3px;
+            }
+
+            #bill {
+                width: 100%;
+                height: 40px;
+                font-size: 1.2rem;
+                text-align: right;
+                background-color: var(--Very-light-grayish-cyan);
+                color: var(--Very-dark-cyan);
+                font-family: "Space Mono", monospace;
+                font-weight: 700;
+                font-style: normal;
+                background-image: url(./images/icon-dollar.svg);
+                background-repeat: no-repeat;
+                background-position: 5% 50%;
+                padding: 0 10px 0 30px;
+                margin-bottom: 20px;
+                border-radius: 5px;
+                border: none;
+                cursor: pointer;
+                
+                &:focus {
+                    all: initial;
+                    border: 1px solid var(--Strong-cyan);
+                    background-color: var(--Very-light-grayish-cyan);
+                    width: 85%;
+                    height: 40px;
+                    font-size: 1.2rem;
+                    text-align: right;
+                    padding: 0 5px 0 35px;
+                    margin-bottom: 18.5px;
+                    border-radius: 5px;
+                    background-image: url(./images/icon-dollar.svg);
+                    background-repeat: no-repeat;
+                    background-position: 5% 50%;
+                    font-family: "Space Mono", monospace;
+                    font-weight: 700;
+                    font-style: normal;
+                    cursor: pointer;
+                }
+            }
+
+            #tip-selection {
+                margin-bottom: 10px;
+                width: 45%;
+            }
+
+            .button-container {
+                width: 100%;
+                height: 145px;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-gap: 0 15px;
+                place-content: center;
+                margin-bottom: 20px;
+
+                #tip {
+                    width: 100%;
+                    height: 40px;
+                    text-align: center;
+                    border-radius: 5px;
+                    border: none;
+                    margin: 6px auto;
+                    color: var(--White);
+                    font-size: 1.2rem;
+                    font-family: "Space Mono", monospace;
+                    font-weight: 400;
+                    font-style: normal;
+                }
+
+                #tip:not(:last-child) {
+                    background-color: var(--Very-dark-cyan);
+                }
+
+                #tip:last-child {
+                    background-color: var(--Very-light-grayish-cyan);
+                    color: var(--Very-dark-cyan);
+                    font-weight: 700;
+                }
+
+                #tip:last-child:focus {
+                    all: initial;
+                    border: 1px solid var(--Strong-cyan);
+                    width: 85%;
+                    height: 40px;
+                    margin: 5px auto;
+                    padding: 0 10px;
+                    border-radius: 5px;
+                    font-size: 1.2rem;
+                    font-weight: 700;
+                    text-align: right;
+                    background-color: var(--Very-light-grayish-cyan);
+                    color: var(--Very-dark-cyan);
+                    font-family: "Space Mono", monospace;
+                }
+
+                
+
+                #tip:not(:last-child):hover {
+                    background-color: var(--Strong-cyan);
+                    color: var(--Very-dark-cyan);
+                    font-weight: 700;
+                    cursor: pointer;
+                }
+
+                #tip:last-child:hover {
+                    cursor: pointer;
+                }
+
+                #tip:last-child::placeholder {
+                    text-align: center;
+                    color: var(--Dark-grayish-cyan);
+                }
+            }
+
+            #no-of-people {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 10px;
+                align-items: center;
+
+                .error-msg {
+                    color: var(--error-text);
+                    font-size: .7rem;
+                }
+            }
+
+            #people {
+                width: 100%;
+                height: 40px;
+                border: none;
+                border-radius: 5px;
+                text-align: right;
+                font-size: 1.2rem;
+                padding: 0 5px 0 35px;
+                font-family: "Space Mono", monospace;
+                font-weight: 700;
+                font-style: normal;
+                background-color: var(--Very-light-grayish-cyan);
+                color: var(--Very-dark-cyan);
+                background-image: url(./images/icon-person.svg);
+                background-repeat: no-repeat;
+                background-position: 5% 50%;
+
+                &:focus {
+                    all: initial;
+                    border: 1px solid var(--Strong-cyan);
+                    background-color: var(--Very-light-grayish-cyan);
+                    width: 85%;
+                    height: 40px;
+                    font-size: 1.2rem;
+                    text-align: right;
+                    padding: 0 5px 0 35px;
+                    border-radius: 5px;
+                    background-image: url(./images/icon-person.svg);
+                    background-repeat: no-repeat;
+                    background-position: 5% 50%;
+                    font-family: "Space Mono", monospace;
+                    font-weight: 700;
+                    font-style: normal;
+                    cursor: pointer;
+                }
+                
+            }
+        }
+
+        .result {
+            width: 100%;
+            background-color: var(--Very-dark-cyan);
+            border: none;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+
+            .tip-container, .total-container {
+                font-size: .8rem;
+                display: flex;
+                justify-content: space-between;
+
+                .tip-word, .total-word {
+                    display: flex;
+                    flex-direction: column;
+                    color: var(--Very-light-grayish-cyan);
+                    margin-bottom: 20px;
+
+                    .slash {
+                        color: var(--Grayish-cyan);
+                    }
+                }
+
+                .tip, .total-amount {
+
+                    .dollar-sign {
+                        margin-right: 2px;
+                    }
+
+                    .tip-per-person, .total {
+                        font-weight: 700;
+                        font-size: 1.5rem;
+                        color: var(--Strong-cyan);
+                    }
+                }
+            }
+
+            #reset-btn {
+                width: 100%;
+                height: 40px;
+                border: none;
+                border-radius: 5px;
+                font-family: "Space Mono", monospace;
+                font-weight: 700;
+                font-style: normal;
+                font-size: 1rem;
+                background-color: var(--Strong-cyan);
+                color: var(--Very-dark-cyan);
+            } 
+
+            #reset-btn:hover {
+                background-color: var(--Light-grayish-cyan);
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.disable {
+    display: none;
+}
+
+footer {
+    margin-top: auto;
+}
+
+@media (min-width: 600px) {
+
+    main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        width: 800px;
+        max-width: 1440px;
+
+        #logo {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background-color: var(--White);
+            width: 700px;
+            height: auto;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            border-radius: 20px;
+            margin: 0;
+
+            .form-fill {
+                width: 350px;
+                height: 100%;
+                border-radius: 10px;
+                margin: 0;
+                margin-right: 20px;
+
+
+                .button-container {
+                    width: 100%;
+                    height: auto;
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    grid-gap: 0 15px;
+                    place-content: center;
+                    margin-bottom: 20px;
+                }
+            }
+
+            #people {
+                width: 90%;
+                height: 40px;
+                border: none;
+                border-radius: 5px;
+                text-align: right;
+                font-size: 1.2rem;
+                padding: 0 5px 0 35px;
+                font-family: "Space Mono", monospace;
+                font-weight: 700;
+                font-style: normal;
+                background-color: var(--Very-light-grayish-cyan);
+                color: var(--Very-dark-cyan);
+                background-image: url(./images/icon-person.svg);
+                background-repeat: no-repeat;
+                background-position: 5% 50%;
+
+                &:focus {
+                    all: initial;
+                    border: 1px solid var(--Strong-cyan);
+                    background-color: var(--Very-light-grayish-cyan);
+                    width: 95%;
+                    height: 40px;
+                    font-size: 1.2rem;
+                    text-align: right;
+                    padding: 0 5px 0 35px;
+                    border-radius: 5px;
+                    background-image: url(./images/icon-person.svg);
+                    background-repeat: no-repeat;
+                    background-position: 5% 50%;
+                    font-family: "Space Mono", monospace;
+                    font-weight: 700;
+                    font-style: normal;
+                    cursor: pointer;
+                }
+                
+            }
+
+            .result {
+                width: 350px;
+                height: 360px;
+               
+                .tip-container, .total-container {
+                    margin-top: 20px;
+                }
+    
+                #reset-btn {  
+                    margin-top: auto;
+                } 
+            }
+        }
+
+    }
+    
+}
+
+
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/*
+input[type="number"] {
+    -moz-appearance: textfield;
+}*/
