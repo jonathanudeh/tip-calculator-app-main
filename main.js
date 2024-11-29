@@ -72,18 +72,20 @@ resetBtn.addEventListener("click", () => {
 billInput.addEventListener("input", (e) => {
     billValue = e.target.value;
     handleCalculation(e); 
-})
+});
 
 tipPercent.forEach(el => {
+    if (el.tagName === "BUTTON") {
     el.addEventListener("click", (e)=> {
         tipSelect = e.target.value;
         handleCalculation(e)
-    })
+    }); 
+    }
     el.addEventListener("input", (e)=> {
         tipSelect = e.target.value;
         handleCalculation(e)
-    })
-})
+    });
+});
 
 people.addEventListener("input", handleCalculation);
 
