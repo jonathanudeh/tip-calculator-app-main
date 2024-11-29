@@ -10,11 +10,8 @@ let billValue;
 let tipSelect;
 
 const handleBill = (bill) => {
-    if (Number(bill) && bill.length > 0 ) {
-        return bill; // return bill if bill is a number and bill is not empty
-    } else {
-        return bill = 0; // else assign 0 to bill
-    }
+    const numericBill = Number(bill);
+    return isNaN(numericBill) || numericBill < 0 ? 0 : numericBill;
 }
 
 const handlePercent = (percent) => {
@@ -30,16 +27,29 @@ const handleTotalTip = (element, tip) => {
 }
 
 const handleCalculation = (e) => {
-    if (e.target.value.length <= 0 || e.target.value === "0" || e.target.value < 0 || (billValue < 0 && tipSelect > 0) || (billValue < 0 && tipSelect > 0 && people.value > 0) || (billValue > 0 && tipSelect < 0 && people.value > 0) || (billValue > 0 && tipSelect < 0 && people.value < 0) || (billValue > 0 && tipSelect > 0 && people.value < 0)) {
+    const validInput = e.target.value.length > 0 && e.target.value > 0 && e.target.value !== "0";
+    
+    if (!validInput) {
         errorMsg.classList.remove("disable"); // shows error message if any fied is left empty 
     } else {
         errorMsg.classList.add("disable");
         let amountInPercentage = (handleBill(billValue) * handlePercent(tipSelect)) / 100; // calculate the total amount of tip everyone got
+
+        if(people.value <= 0) {
+            individualTip.textContent = "0.00";
+            totalTip.textContent = "0.00";
+        }
+        
         let tipPerPerson = amountInPercentage / people.value; //calculate the tipp each person should get
-        if(tipPerPerson === Infinity || tipPerPerson === '' || isNaN(tipPerPerson)) return tipPerPerson = 1; //prvents the error thats shows on calculator if no. of people is yet to be filled
-       
-        handleIndividualTip(individualTip, tipPerPerson); // calling the function that handles display of tip
-        handleTotalTip(totalTip, amountInPercentage); // caling the function that handles display of total tip
+        
+       if (isNaN(amountInPercentage) || isNaN(tipPerPerson)) {
+           individualTip.textContent = "0.00";
+            totalTip.textContent = "0.00";
+       } else {
+          handleIndividualTip(individualTip, tipPerPerson); // calling the function that handles display of tip
+       handleTotalTip(totalTip, amountInPercentage); // caling the function that handles display of total tip
+       }
+        
         
     }
 }
