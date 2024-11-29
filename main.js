@@ -27,7 +27,7 @@ const handleTotalTip = (element, tip) => {
 }
 
 const handleCalculation = (e) => {
-    const validInput = e.target.value.length > 0 && e.target.value > 0 && e.target.value !== "0";
+    const validInput = e.target.value.length > 0 || e.target.value > 0 || e.target.value !== "0";
     
     if (!validInput) {
         errorMsg.classList.remove("disable"); // shows error message if any fied is left empty 
@@ -80,12 +80,12 @@ tipPercent.forEach(el => {
         tipSelect = e.target.value;
         handleCalculation(e)
     }); 
-    }
+    } else {
     el.addEventListener("input", (e)=> {
         tipSelect = e.target.value;
         handleCalculation(e)
     });
-});
+}});
 
 people.addEventListener("input", handleCalculation);
 
