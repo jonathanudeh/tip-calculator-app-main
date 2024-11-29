@@ -30,7 +30,7 @@ const handleTotalTip = (element, tip) => {
 }
 
 const handleCalculation = (e) => {
-    if (e.target.value.length <= 0 || e.target.value === "0") {
+    if (e.target.value.length <= 0 || e.target.value === "0" || e.target.value < 0) {
         errorMsg.classList.remove("disable"); // shows error message if any fied is left empty 
     } else {
         errorMsg.classList.add("disable");
